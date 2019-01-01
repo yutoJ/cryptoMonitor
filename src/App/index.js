@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Welcome from './Weclome';
 import styled, {css} from 'styled-components';
+import AppLayout from './AppLayout';
 
 const MyButton = styled.div`
   display: inline-block;
@@ -25,12 +26,12 @@ const TomatoButton = styled(MyButton)`
 class App extends Component {
   render() {
     return (
-      <div>
+      <AppLayout>
         <Welcome name={"guest"} />
         <MyButton>hello </MyButton>
         <MyButton primary>hello </MyButton>
         <TomatoButton primary>hello </TomatoButton>
-      </div>
+      </AppLayout>
     );
   }
 }
