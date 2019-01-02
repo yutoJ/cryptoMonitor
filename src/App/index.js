@@ -5,6 +5,7 @@ import AppLayout from './AppLayout';
 import AppBar from './AppBar';
 import {AppProvider} from './AppProvider';
 import Settings from '../Settings'
+import Content from '../Shared/Content'
 
 const MyButton = styled.div`
   display: inline-block;
@@ -31,9 +32,9 @@ class App extends Component {
       <AppLayout>
         <AppProvider>
           <AppBar />
-          <Settings name={"guest"} />
-          <MyButton>hello </MyButton>
-          <MyButton primary>hello </MyButton>
+          <Content>
+            <Settings />
+          </Content>
           <TomatoButton primary>hello </TomatoButton>
         </AppProvider>
       </AppLayout>

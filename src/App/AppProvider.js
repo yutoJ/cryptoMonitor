@@ -1,5 +1,4 @@
 import React from 'react';
-import { async } from 'q';
 
 const cc = require('cryptocompare');
 
@@ -22,7 +21,8 @@ export class AppProvider extends React.Component {
 
     fetchCoins = async () => {
         let coinList = (await cc.coinList()).Data;
-        this.setState(coinList);
+        console.log(coinList);
+        this.setState({coinList});
         
     }
     confirmFavorites = () => {
