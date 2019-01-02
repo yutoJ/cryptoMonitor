@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Welcome from './Weclome';
 import styled, {css} from 'styled-components';
 import AppLayout from './AppLayout';
 import AppBar from './AppBar';
 import {AppProvider} from './AppProvider';
+import Settings from '../Settings'
 
 const MyButton = styled.div`
   display: inline-block;
@@ -31,7 +31,7 @@ class App extends Component {
       <AppLayout>
         <AppProvider>
           <AppBar />
-          <Welcome name={"guest"} />
+          <Settings name={"guest"} />
           <MyButton>hello </MyButton>
           <MyButton primary>hello </MyButton>
           <TomatoButton primary>hello </TomatoButton>
