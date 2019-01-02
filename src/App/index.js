@@ -5,6 +5,7 @@ import AppLayout from './AppLayout';
 import AppBar from './AppBar';
 import {AppProvider} from './AppProvider';
 import Settings from '../Settings'
+import Dashboard from '../Dashboard'
 import Content from '../Shared/Content'
 
 const MyButton = styled.div`
@@ -34,6 +35,7 @@ class App extends Component {
           <AppBar />
           <Content>
             <Settings />
+            <Dashboard />
           </Content>
           <TomatoButton primary>hello </TomatoButton>
         </AppProvider>

@@ -9,7 +9,6 @@ export default function(props) {
             }
             console.log('loading')
             if(!firstVisit && !prices){
-                console.log('loaded')
                 return <div> Loading Prices </div>
             }
             return <div> {props.children}</div>
