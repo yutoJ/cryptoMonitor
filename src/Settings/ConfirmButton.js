@@ -11,8 +11,7 @@ const ConfirmButtonStyled = styled.div`
     cursor: pointer;
     &:hover {
         ${greenBoxShadow}
-    }
-    
+    }    
 `
 export const CenterDiv = styled.div`
     display: grid;
