@@ -3,6 +3,7 @@ import './App.css';
 import Welcome from './Weclome';
 import styled, {css} from 'styled-components';
 import AppLayout from './AppLayout';
+import AppBar from './AppBar';
 
 const MyButton = styled.div`
   display: inline-block;
@@ -27,6 +28,7 @@ class App extends Component {
   render() {
     return (
       <AppLayout>
+        <AppBar />
         <Welcome name={"guest"} />
         <MyButton>hello </MyButton>
         <MyButton primary>hello </MyButton>
