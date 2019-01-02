@@ -4,6 +4,7 @@ import Welcome from './Weclome';
 import styled, {css} from 'styled-components';
 import AppLayout from './AppLayout';
 import AppBar from './AppBar';
+import {AppProvider} from './AppProvider';
 
 const MyButton = styled.div`
   display: inline-block;
@@ -28,11 +29,13 @@ class App extends Component {
   render() {
     return (
       <AppLayout>
-        <AppBar />
-        <Welcome name={"guest"} />
-        <MyButton>hello </MyButton>
-        <MyButton primary>hello </MyButton>
-        <TomatoButton primary>hello </TomatoButton>
+        <AppProvider>
+          <AppBar />
+          <Welcome name={"guest"} />
+          <MyButton>hello </MyButton>
+          <MyButton primary>hello </MyButton>
+          <TomatoButton primary>hello </TomatoButton>
+        </AppProvider>
       </AppLayout>
     );
   }
