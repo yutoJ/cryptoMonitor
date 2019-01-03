@@ -16,13 +16,15 @@ export class AppProvider extends React.Component {
         this.state = {
             page: 'dashboard',
             favorites: ['BTC', 'ETC', 'XMR', 'DOGE'],
+            timeInterval: 'months',
             ...this.savedSettings(),
             setPage: this.setPage,
             addCoin: this.addCoin,
             isInFavorites: this.isInFavorites,
             removeCoin: this.removeCoin,
             setCurrentFavorite: this.setCurrentFavorite,
-            confirmFavorites: this.confirmFavorites
+            confirmFavorites: this.confirmFavorites,
+            changeChartSelect: this.changeChartSelect
         }
     }
 
@@ -66,7 +68,7 @@ export class AppProvider extends React.Component {
             {
                 name: this.state.currentFavorite,
                 data: results.map((ticker, index) => [
-                    moment().subtract({months: TIME_UNITS - index}).valueOf(),
+                    moment().subtract({[this.state.timeInterval]: TIME_UNITS - index}).valueOf(),
                     ticker.USD
                 ])
             }
@@ -95,7 +97,7 @@ export class AppProvider extends React.Component {
                     cc.priceHistorical(
                         this.state.currentFavorite,
                         ['USD'],
-                        moment().subtract({months: units}).toDate()
+                        moment().subtract({[this.state.timeInterval]: units}).toDate()
                     )
                 )
             } catch(e) {
@@ -142,6 +144,11 @@ export class AppProvider extends React.Component {
         }
         let {favorites, currentFavorite} = cryptoMonitorData;
         return {favorites, currentFavorite};
+    }
+
+    changeChartSelect = (value)  => {
+        console.log(value);
+        this.setState({timeInterval: value, historical: null}, this.fetchHistorical);
     }
 
     render() {
