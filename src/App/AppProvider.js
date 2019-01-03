@@ -18,6 +18,7 @@ export class AppProvider extends React.Component {
             addCoin: this.addCoin,
             isInFavorites: this.isInFavorites,
             removeCoin: this.removeCoin,
+            setCurrentFavorite: this.setCurrentFavorite,
             confirmFavorites: this.confirmFavorites
         }
     }
@@ -68,17 +69,30 @@ export class AppProvider extends React.Component {
     }
 
     confirmFavorites = () => {
+        let currentFavorite = this.state.favorites[0];
         this.setState({
             firstVisit: false,
-            page: 'dashboard'
+            page: 'dashboard',
+            currentFavorite
         }, () => {
             this.fetchPrices();
         });
         localStorage.setItem('cryptoMonitor', JSON.stringify({
-            favorites: this.state.favorites
+            favorites: this.state.favorites,
+            currentFavorite
         }));
     }
     setPage = page => this.setState({page})
+
+    setCurrentFavorite = (sym) => {
+        this.setState({
+            currentFavorite: sym
+        });
+        localStorage.setItem('cryptoMonitor',JSON.stringify({
+            ...JSON.parse(localStorage.getItem('cryptoMonitor')),
+            currentFavorite: sym
+        }));
+    }
 
     savedSettings(){
         console.log("savedSettings 1");
@@ -88,8 +102,8 @@ export class AppProvider extends React.Component {
         }
         console.log("savedSettings 2");
         console.log(favorites);
-        let {favorites} = cryptoMonitorData;
-        return {favorites};
+        let {favorites, currentFavorite} = cryptoMonitorData;
+        return {favorites, currentFavorite};
     }
 
     render() {
